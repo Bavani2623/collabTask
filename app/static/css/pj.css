@@ -1,0 +1,16 @@
+body {
+    background-color: #02343f !important;
+    font-family: "Raleway", sans-serif !important;
+}
+
+.navbar{
+    background-color: #00242c !important;
+}
+
+#sidebar nav a{
+    color: white;
+}
+.myTable{
+    background-color: aliceblue;
+
+}
