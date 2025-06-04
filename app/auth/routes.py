@@ -1,5 +1,5 @@
 from . import auth_bp
-from flask import request, jsonify
+from flask import request, jsonify, session
 from models import User
 
 @auth_bp.post('/register')
@@ -28,10 +28,43 @@ def register():
     else:
         return jsonify({"status":"error","message":"password should be greater than 4 and less than 8"})
     
-    return jsonify({"message":"User register successfully"})
-   
-          
+    return jsonify({"message":"User register successfully"})  
 
 
-       
+
+
+@auth_bp.post('/login')
+def login():
+    data = request.get_json()
+
+    email = data.get('email')
+    password = data.get('password')
+
+    user = User.objects(email=email).first()
+    if not user:
+        return jsonify({"status": "error", "message": "User not registered. Please Register to continue."})
+    
+    if user.password != password:
+        return jsonify({"status": "error", "message": "User is registered but password is not matched"})
+    
+    userInfo = {
+        "name": user.name,
+        "email": user.email,
+        "id": user.id
+    }
+
+    session["user"] = userInfo
+
+    return jsonify({"status": "success", "message": "User Login Successfully"})
+
+
+@auth_bp.post("/logout")
+def logout():
+    current_user = session["user"]
+
+    if current_user:
+        session.clear()
+        return jsonify({"status": "success", "message": "User logout successfully."})
+    else:
+        return jsonify({"status": "error", "message": "User is not login, please login to continue."})
     
