@@ -11,3 +11,11 @@ class User(Document):
 
     addedTime = DateTimeField(default=datetime.now())
     updatedTime = DateTimeField()
+
+class Project(Document):
+    id = StringField()
+    name = StringField(required=True)
+    description = StringField(required=True)
+
+    addedTime = DateTimeField(default=datetime.now())
+    updatedTime = DateTimeField() 

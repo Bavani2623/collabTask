@@ -29,6 +29,9 @@ def createapp():
     from app.user import user_bp
     app.register_blueprint(user_bp, url_prefix='/user')
 
+    from app.project import project_bp
+    app.register_blueprint(project_bp, url_prefix='/project')
+
 
 
 
