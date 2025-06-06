@@ -19,3 +19,14 @@ class Project(Document):
 
     addedTime = DateTimeField(default=datetime.now())
     updatedTime = DateTimeField() 
+
+
+class Task(Document):
+    id = StringField()
+    name = StringField(required=True)
+    description = StringField(required=True)
+    status = StringField(required=True, choices = ["Todo","pending","done"])
+    assignedTo = ReferenceField(User,reverse_delete_rule=CASCADE)
+    addedTime = DateTimeField(default=datetime.now())
+    updatedTime = DateTimeField() 
+
