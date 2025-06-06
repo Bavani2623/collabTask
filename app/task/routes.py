@@ -1,6 +1,6 @@
 from flask import jsonify, session, request
 from . import task_bp
-from models import Task
+from models import Task, User
 from datetime import datetime
 
 @task_bp .post('/add')
@@ -141,3 +141,24 @@ def getMany():
         actual_data.append(data)
 
     return jsonify({"status": "success", "message": "Task Retrieved Successfully", "data": actual_data})
+
+@task_bp.put('/assignTask')
+def assignTask():
+    data = request.get_json()
+    
+    assignedTo = data.get('assignedTo')
+    taskList = data.get('taskList')
+
+    user = User.objects(id=assignedTo).first()
+    if not user:
+        return jsonify({"status":"error","Message":"User not found"})
+
+    for task in taskList:
+        task = Task.objects(id=task).first()
+        if not task:
+            return jsonify({"status":"error","Message":"Task not found"})          
+        
+        task.assignedTo = user
+
+    return jsonify({"status":"success","Message":"Task Assigned Successfully"})
+        
