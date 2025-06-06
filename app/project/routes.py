@@ -46,7 +46,7 @@ def updateProject():
     project = Project.objects(id=id).first()
     
     if not project:
-        return jsonify({"status": "error", "message": "User not found."})
+        return jsonify({"status": "error", "message": "Project not found."})
 
     
     data = request.get_json()
@@ -79,11 +79,11 @@ def deleteProject():
     project = Project.objects(id=id).first()
     
     if not project:
-        return jsonify({"status": "error", "message": "User not found."})
+        return jsonify({"status": "error", "message": "Project not found."})
 
     Project.delete()
 
-    return jsonify({"status": "success", "message": "project deleted successfully."})
+    return jsonify({"status": "success", "message": "Project deleted successfully."})
 
 
 @project_bp.get('/getSingle')
@@ -102,7 +102,7 @@ def getSingleProject():
     project = Project.objects(id=id).first()
     
     if not project:
-        return jsonify({"status": "error", "message": "User not found."})
+        return jsonify({"status": "error", "message": "Project not found."})
     
     actual_data = {
         "name":  Project.name,
