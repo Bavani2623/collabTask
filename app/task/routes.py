@@ -142,6 +142,36 @@ def getMany():
 
     return jsonify({"status": "success", "message": "Task Retrieved Successfully", "data": actual_data})
 
+
+@task_bp.put('/updateStatus')
+def updateTaskStatus():
+    current_user = session["user"]
+
+    if not current_user:
+        return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
+
+    id = request.args.get("id")
+
+    if not id:
+        return jsonify({"status": "error", "message": "Id not found"})
+    
+    task = Task.objects(id=id).first()
+    if not task:
+        return jsonify({"status": "error", "message": "Task not found."})
+    
+    data = request.get_json()
+    status = data.get('status')
+
+    if  status == "" :
+        return jsonify({"status":"error","message":"status is required!"})
+    
+    task.status = status
+
+    task.save()
+
+    return jsonify({"status": "success", "message": "Task  Updated successfully."})
+
+
 @task_bp.put('/assignTask')
 def assignTask():
     data = request.get_json()
@@ -161,4 +191,3 @@ def assignTask():
         task.assignedTo = user
 
     return jsonify({"status":"success","Message":"Task Assigned Successfully"})
-        
