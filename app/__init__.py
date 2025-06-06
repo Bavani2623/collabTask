@@ -32,6 +32,10 @@ def createapp():
     from app.project import project_bp
     app.register_blueprint(project_bp, url_prefix='/project')
 
+    from app.dashboard import dashboard_bp
+    app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
+
+
 
 
 
