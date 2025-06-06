@@ -1,3 +1,3 @@
 class Config():
-    MONGO__URI="mongodb://localhost:27017/collabtask"
-    SECRET__KEY="Collab"
+    MONGO_URI="mongodb://localhost:27017/collabtask"
+    SECRET_KEY="Collab"

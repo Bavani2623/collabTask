@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(5, 5, 90)!important;
+    background-color: #02343f !important;
     font-family: "Raleway", sans-serif;
     margin: 0;
     padding: 0;
@@ -12,3 +12,10 @@ body {
     border: 1px solid black;
 }
 
+
+button[type="submit"] {
+            background-color: #3910cd;
+            padding: 10px 20px;
+            border-radius: 5px;
+            width: 100%;
+        }

@@ -20,21 +20,11 @@
         }
 
         .navbar {
-            background-color: #02343f !important;
+            background-color: #00242c !important;
         }
 
         #sidebar nav a {
             color: white;
-        }
-
-        .icon-large {
-            font-size: 8rem;
-        }
-
-        button[type="Save"] {
-            background-color: blue;
-            border-radius: 10pxx;
-            width: 10%;
         }
     </style>
 
@@ -56,19 +46,19 @@
             <!-- Header nav for desktop -->
             <div class="d-none d-lg-flex">
                 <ul class="navbar-nav flex-row">
-                    <li class="nav-item me-3"><a class="nav-link text-white" href="#"><i
+                    <li class="nav-item me-3"><a class="nav-link text-white" href="/setting"><i
                                 class="bi bi-gear-fill fs-4"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false"><i class="bi bi-person-circle text-white fs-4"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">User Name</a></li>
-                            <li><a class="dropdown-item" href="#">User Email</a></li>
+                            <li><a class="dropdown-item" href="#">{{user.name}}</a></li>
+                            <li><a class="dropdown-item" href="#">{{user.email}}</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" hrefi="#"> <i class="bi bi-box-arrow-left"></i>
+                            <li><a class="dropdown-item" href="/auth/logout"> <i class="bi bi-box-arrow-left"></i>
                                     Logout</a>
                             </li>
                         </ul>
@@ -84,7 +74,6 @@
         </div>
     </nav>
 
-
     <!-- Header Offcanvas (for tab/mobile only) -->
     <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="headerMenu" aria-labelledby="headerMenuLabel">
         <div class="offcanvas-header">
@@ -94,8 +83,8 @@
         <div class="offcanvas-body">
             <ul class="list-unstyled">
                 <li><a href="#" class="nav-link"><i class="bi bi-person-circle"></i>Profile</a></li>
-                <li><a href="#" class="nav-link"> <i class="bi bi-gear"></i>Settings</a></li>
-                <li><a href="#" class="nav-link"> <i class="bi bi-box-arrow-left"></i>Logout</a></li>
+                <li><a href="/setting" class="nav-link"> <i class="bi bi-gear"></i>Settings</a></li>
+                <li><a href="/auth/logout" class="nav-link"> <i class="bi bi-box-arrow-left"></i>Logout</a></li>
             </ul>
         </div>
     </div>
@@ -114,8 +103,8 @@
                     </div>
                     <div class="offcanvas-body p-0">
                         <nav class="nav flex-column pt-3 px-2">
-                            <a href="#" class="nav-link"> <i class="bi bi-arrows"></i>Back</a>
-                            <a class="nav-link" href="#">User Profile</a>
+                            <a href="/" class="nav-link"> <i class="bi bi-arrows"></i>Back</a>
+                            <a class="nav-link" href="/setting">User Profile</a>
                             <a class="nav-link" href="#"> <i class="bi bi-credit-card"></i>Payments</a>
                         </nav>
                     </div>
@@ -128,7 +117,7 @@
                     <div style="display: flex;">
                         <div style="width: 20%; text-align: center;">
                             <a href="#" class="nav-link"><i class="bi bi-person-circle"
-                                        style="font-size: 8rem;"></i></a>
+                                    style="font-size: 8rem;"></i></a>
                         </div>
                         <div style="width: 50%; padding-right: 30px;">
                             <form id="myForm" class="p-3 border rounded  bg-light">
@@ -167,6 +156,11 @@
             </main>
         </div>
     </div>
+
+     <!-- Bootstrap JS Bundle CDN (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

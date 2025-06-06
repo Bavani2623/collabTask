@@ -6,7 +6,7 @@ from datetime import datetime
 @project_bp.post('/add')
 def addProject():
 
-    current_user = session["project"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -33,7 +33,7 @@ def addProject():
 @project_bp.put('/update')
 def updateProject():
 
-    current_user = session["project"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -66,7 +66,7 @@ def updateProject():
 @project_bp.delete('/delete')
 def deleteProject():
 
-    current_user = session["project"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -89,7 +89,7 @@ def deleteProject():
 @project_bp.get('/getSingle')
 def getSingleProject():
     
-    current_user = session["project"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -116,7 +116,7 @@ def getSingleProject():
 @project_bp.get('/getMany')
 def getMany():
     
-    current_user = session["project"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})

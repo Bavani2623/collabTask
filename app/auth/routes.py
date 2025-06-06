@@ -13,7 +13,7 @@ def register():
     
 
     if name == "" or email=="" or password=="" or mobileNumber=="":
-         return jsonify({"status":"error","message":"all data is required!"})
+         return jsonify({"status":"error", "message":"All data is required!"})
         
    
     if len(password)>4 and len(password)<8:
@@ -26,9 +26,9 @@ def register():
 
         user.save()
     else:
-        return jsonify({"status":"error","message":"password should be greater than 4 and less than 8"})
+        return jsonify({"status":"error", "message":"password should be greater than 4 and less than 8"})
     
-    return jsonify({"message":"User register successfully"})  
+    return jsonify({"status":"success", "message":"User Register Successfully"})  
 
 
 
@@ -58,9 +58,9 @@ def login():
     return jsonify({"status": "success", "message": "User Login Successfully"})
 
 
-@auth_bp.post("/logout")
+@auth_bp.get("/logout")
 def logout():
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if current_user:
         session.clear()

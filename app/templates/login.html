@@ -24,17 +24,17 @@
 
 <body>
     <div class="container">
-        <h1 style="text-align: center; color:aliceblue">Login</h1>
         <div class="row justify-content-center align-items-center" style="height: 100vh;">
             <div class="col-md-4">
-                <form>
+                <h1 style="text-align: center; color:aliceblue" class="mb-4">Login</h1>
+                <form id="loginForm">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email">
                     </div>
                     <div class="mb-3">
                         <label for="inputPassword" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword"
+                        <input type="password" name="password" class="form-control" id="inputPassword"
                             placeholder="Enter your password">
                     </div>
                     <div class="d-grid">
@@ -54,6 +54,8 @@
             max-width: 400px;
         }
     </style>
+
+    <script src="../static/js/login.js"></script>
 </body>
 
 </html>

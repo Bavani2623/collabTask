@@ -6,7 +6,7 @@ from datetime import datetime
 @task_bp .post('/add')
 def addtask():
 
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -34,7 +34,7 @@ def addtask():
 @task_bp.put('/update')
 def updateTask():
 
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -69,7 +69,7 @@ def updateTask():
 @task_bp.delete('/delete')
 def deleteTask():
 
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -91,7 +91,7 @@ def deleteTask():
 @task_bp.get('/getSingle')
 def getSingletask():
     
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -119,7 +119,7 @@ def getSingletask():
 @task_bp.get('/getMany')
 def getMany():
     
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -145,7 +145,7 @@ def getMany():
 
 @task_bp.put('/updateStatus')
 def updateTaskStatus():
-    current_user = session["user"]
+    current_user = session.get("user")
 
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
@@ -174,6 +174,11 @@ def updateTaskStatus():
 
 @task_bp.put('/assignTask')
 def assignTask():
+    current_user = session.get("user")
+
+    if not current_user:
+        return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
+    
     data = request.get_json()
     
     assignedTo = data.get('assignedTo')
@@ -191,3 +196,26 @@ def assignTask():
         task.assignedTo = user
 
     return jsonify({"status":"success","Message":"Task Assigned Successfully"})
+
+@task_bp.get('/getAllNames')
+def getAllNames():
+    
+    current_user = session["user"]
+
+    if not current_user:
+        return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
+    
+    tasks= Task.objects()
+
+    actual_data = []
+
+    for task in tasks:
+        data = {
+
+            "id": task.id,
+            "name":task.name        
+        }
+
+        actual_data.append(data)
+
+    return jsonify({"status": "success", "message": "Task Retrieved Successfully", "data": actual_data})

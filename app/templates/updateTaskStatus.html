@@ -49,19 +49,19 @@
             <!-- Header nav for desktop -->
             <div class="d-none d-lg-flex">
                 <ul class="navbar-nav flex-row">
-                    <li class="nav-item me-3"><a class="nav-link text-white" href="#"><i
+                    <li class="nav-item me-3"><a class="nav-link text-white" href="/setting"><i
                                 class="bi bi-gear-fill fs-4"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false"><i class="bi bi-person-circle text-white fs-4"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">User Name</a></li>
-                            <li><a class="dropdown-item" href="#">User Email</a></li>
+                            <li><a class="dropdown-item" href="#">{{user.name}}</a></li>
+                            <li><a class="dropdown-item" href="#">{{user.email}}</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#"> <i class="bi bi-box-arrow-left"></i>
+                            <li><a class="dropdown-item" href="/auth/logout"> <i class="bi bi-box-arrow-left"></i>
                                     Logout</a>
                             </li>
                         </ul>
@@ -86,8 +86,8 @@
         <div class="offcanvas-body">
             <ul class="list-unstyled">
                 <li><a href="#" class="nav-link"><i class="bi bi-person-circle"></i>Profile</a></li>
-                <li><a href="#" class="nav-link"> <i class="bi bi-gear"></i>Settings</a></li>
-                <li><a href="#" class="nav-link"> <i class="bi bi-box-arrow-left"></i>Logout</a></li>
+                <li><a href="/setting" class="nav-link"> <i class="bi bi-gear"></i>Settings</a></li>
+                <li><a href="/auth/logout" class="nav-link"> <i class="bi bi-box-arrow-left"></i>Logout</a></li>
             </ul>
         </div>
     </div>
@@ -106,10 +106,11 @@
                     </div>
                     <div class="offcanvas-body p-0">
                         <nav class="nav flex-column pt-3 px-2">
-                            <a class="nav-link active" href="#">Dashboard</a>
-                            <a class="nav-link" href="#">Project</a>
-                            <a class="nav-link" href="#">Task</a>
-                            <a class="nav-link" href="#">Assign Task</a>
+                            <a class="nav-link active" href="/dashboard">Dashboard</a>
+                            <a class="nav-link" href="/project">Project</a>
+                            <a class="nav-link" href="/task">Task</a>
+                            <a class="nav-link" href="/assigntask">Assign Task</a>
+                            <a class="nav-link" href="/updateTaskStatus">Update Task Status</a>
                         </nav>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, session
 from mongoengine import connect, connection
 from app.config import Config
 from models import *
@@ -10,7 +10,7 @@ def createapp():
     app.config.from_object(Config)
 
     try:
-        connect(host=Config.MONGO__URI)
+        connect(host=Config.MONGO_URI)
         if connection.get_connection():
             print("Database Connected Successfully")
         else:
@@ -36,7 +36,11 @@ def createapp():
     app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
 
 
-
-
+    @app.context_processor
+    def inject_user():
+        data = session.get("user")
+        return {
+            "user": data
+        }
 
     return app

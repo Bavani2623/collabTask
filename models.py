@@ -13,7 +13,7 @@ class User(Document):
     updatedTime = DateTimeField()
 
 class Project(Document):
-    id = StringField()
+    id = StringField(primary_key=True, default=lambda: str(uuid4()))
     name = StringField(required=True)
     description = StringField(required=True)
 
@@ -22,7 +22,7 @@ class Project(Document):
 
 
 class Task(Document):
-    id = StringField()
+    id = StringField(primary_key=True, default=lambda: str(uuid4()))
     name = StringField(required=True)
     description = StringField(required=True)
     status = StringField(required=True, choices = ["Todo","pending","done"])

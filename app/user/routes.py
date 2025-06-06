@@ -145,3 +145,25 @@ def getMany():
         actual_data.append(data)
 
     return jsonify({"status": "success", "message": "User Retrieved Successfully", "data": actual_data})
+
+@user_bp.get('/getAllNames')
+def getAllNames():
+    
+    current_user = session["user"]
+
+    if not current_user:
+        return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
+    
+    users = User.objects()
+
+    actual_data = []
+
+    for user in users:
+        data = {
+            "id": user.id,
+            "name": user.name
+        }
+
+        actual_data.append(data)
+
+    return jsonify({"status": "success", "message": "User Retrieved Successfully", "data": actual_data})
