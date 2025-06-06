@@ -31,7 +31,7 @@ def addtask():
     return jsonify({"status": "success", "message": "Task Added successfully."})
 
 
-task_bp.put('/update')
+@task_bp.put('/update')
 def updateTask():
 
     current_user = session["user"]
