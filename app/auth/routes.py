@@ -1,5 +1,5 @@
 from . import auth_bp
-from flask import request, jsonify, session
+from flask import request, jsonify, session, redirect
 from models import User
 
 @auth_bp.post('/register')
@@ -64,7 +64,7 @@ def logout():
 
     if current_user:
         session.clear()
-        return jsonify({"status": "success", "message": "User logout successfully."})
+        return redirect('/login')
     else:
         return jsonify({"status": "error", "message": "User is not login, please login to continue."})
     

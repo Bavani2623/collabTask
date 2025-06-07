@@ -39,8 +39,21 @@ def createapp():
     @app.context_processor
     def inject_user():
         data = session.get("user")
+        userId = None
+
+        if data:
+            userId = data.get("id")
+            
+        user = User.objects(id=userId).first()
+
+        if not user:
+            return {
+                "user": None,
+                "isLoggedIn": False
+            }
         return {
-            "user": data
+            "user": data,
+            "isLoggedIn": True
         }
 
     return app
