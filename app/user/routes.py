@@ -16,7 +16,7 @@ def addUser():
     name = data.get('name')
     email = data.get('email')
     password = data.get('password')
-    mobileNumber = data.get('number')
+    mobileNumber = data.get('mobileNumber')
 
     if name == "" or email=="" or password=="" or mobileNumber=="":
          return jsonify({"status":"error","message":"all data is required!"})
@@ -33,7 +33,7 @@ def addUser():
     return jsonify({"status": "success", "message": "User Added successfully."})
 
 
-user_bp.put('/update')
+@user_bp.put('/update')
 def updateUser():
 
     current_user = session["user"]
@@ -54,7 +54,7 @@ def updateUser():
 
     name = data.get('name')
     password = data.get('password')
-    mobileNumber = data.get('number')
+    mobileNumber = data.get('mobileNumber')
 
     if name == "" or password=="" or mobileNumber=="":
         return jsonify({"status":"error","message":"all data is required!"})

@@ -9,8 +9,8 @@ def analytics():
     if not current_user:
         return jsonify({"status": "error", "message": "User not login. Unauthorized Access!"})
     
-    projectCount = Project.count()
-    taskCount = Task.count()
+    projectCount = Project.objects().count()
+    taskCount = Task.objects().count()
 
     data = {
         "projectCount": projectCount,
