@@ -35,6 +35,9 @@ def createapp():
     from app.dashboard import dashboard_bp
     app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
 
+    from app.task import task_bp
+    app.register_blueprint(task_bp, url_prefix='/task')
+
 
     @app.context_processor
     def inject_user():

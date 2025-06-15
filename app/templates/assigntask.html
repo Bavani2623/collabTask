@@ -15,7 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="../static/css/at.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css">
 </head>
 
 <body class="vh-100 d-flex flex-column">
@@ -107,10 +106,10 @@
                     <div class="col-md-9 mb-9">
                         <div class="card">
                             <div class="card-body">
-                                <form id="myForm">
+                                <form id="assignTaskForm">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Task</label>
-                                        <select multiple class="form-select select2-multiple">
+                                        <select multiple name="taskList" id="taskList" class="form-select select2-multiple">
                                             <option value="task1">task1</option>
                                             <option value="task2">task2</option>
                                             <option value="task3">task3</option>
@@ -119,7 +118,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="user" class="form-label">User</label>
-                                        <select name="city" id="city" class="form-select select2-single">
+                                        <select name="assignedTo" id="userList" class="form-select select2-single">
                                             <option value="">Select</option>
                                             <option value="User1">User1</option>
                                             <option value="User2">User2</option>
@@ -131,55 +130,11 @@
                                     <div class="d-grid">
                                         <button type="Register" class="btn btn-primary">Assign</button>
                                     </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <table id="assignTask" class="table table-bordered mt-4 border-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col"><input type="checkbox" class="form-check-input" /></th>
-                            <th scope="col">Task</th>
-                            <th scope="col">User</th>
-                            <th scope="col">Added Time</th>
-                            <th scope="col">Updated Time</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><input type="checkbox" class="form-check-input" /></th>
-                            <td>Complete Frontend</td>
-                            <td>Akash</td>
-                            <td>10-02-2025</td>
-                            <td>11-02-2025</td>
-                            <td><i class="bi bi-pencil-square"></i>
-                                <i class="bi bi-trash"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox" class="form-check-input" /></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><i class="bi bi-pencil-square"></i>
-                                <i class="bi bi-trash"></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><input type="checkbox" class="form-check-input" /></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><i class="bi bi-pencil-square"></i>
-                                <i class="bi bi-trash"></i>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
             </main>
         </div>
     </div>
@@ -199,13 +154,7 @@
         });
     </script>
 
-    <script src="https://cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
-
-    <script>
-        $(document).ready( function () {
-            $('#assignTask').DataTable();
-        } );
-    </script>
+    <script src="../static/js/assigntask.js"></script>
 
 </body>
 

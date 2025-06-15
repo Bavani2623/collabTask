@@ -13,8 +13,7 @@
     <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -140,26 +139,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card" style="width: 100" !important>
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h5 class="card-title">Task Name</h5>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn dropdown" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Description</h5>
-                                    </div>
+                                <div class="row" id="taskContainer"   style="height: 70vh;">
+                                    <!-- Dynamically Loaded Content from JS -->
                                 </div>
                             </div>
                         </div>
@@ -184,26 +165,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card" style="width: 100" !important>
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h5 class="card-title">Task Name</h5>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn dropdown" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Description</h5>
-                                    </div>
+                                <div class="row" id="todoContainer" data-status="todo" style="height: 70vh;">
+                                    <!-- Dynamically Draggable Content -->
                                 </div>
                             </div>
                         </div>
@@ -228,26 +191,8 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card" style="width: 100" !important>
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h5 class="card-title">Task Name</h5>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn dropdown" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Description</h5>
-                                    </div>
+                                <div class="row" id="pendingContainer" data-status="pending" style="height: 70vh;">
+                                    <!-- Dynamically Draggable Content -->
                                 </div>
                             </div>
                         </div>
@@ -272,40 +217,68 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="card" style="width: 100" !important>
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h5 class="card-title">Task Name</h5>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn dropdown" data-bs-toggle="dropdown"
-                                                aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                <li>
-                                                    <hr class="dropdown-divider">
-                                                </li>
-                                                <li><a class="dropdown-item" href="#">Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Description</h5>
-                                    </div>
+                                <div class="row" id="doneContainer" data-status="done" style="height: 70vh;">
+                                    <!-- Dynamically Draggable Content -->
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </main>
         </div>
     </div>
+
     <!-- Bootstrap JS Bundle CDN (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+    
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script src="../static/js/updateTaskStatus.js"></script>
 
+    <script>
+        setTimeout(()=>{
+            $(function () {
+                $(".taskCard").draggable({
+                    revert: "invalid",
+                    cursor: "move"
+                });
+                $("#todoContainer, #pendingContainer, #doneContainer").droppable({
+                    accept: ".taskCard",
+                    drop: function( event, ui ) {
+                        updateStatus( ui.draggable, event );
+                    }
+                });
+            });
+
+            function updateStatus( $item, event ) {
+                let id = $item.attr("data-id")
+                let targetElement = event.target
+                let status = targetElement.getAttribute("data-status")
+                const actual_data = {'status': status}
+                fetch(`/task/updateStatus?id=${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(actual_data)
+                })
+                .then(res=>res.json())
+                .then(data =>{
+                    if (data.status == "success") {
+                        alert(data.message)
+                    }
+                    else{
+                        throw data.message
+                    }
+                })
+                .catch(error =>{
+                    alert(error)
+                })
+            }
+        }, 500)
+    </script>
 </body>
 
 </html>
